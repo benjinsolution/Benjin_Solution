@@ -1,6 +1,5 @@
 {
   "MssqlDbConfigure": {
     "EnableAutoMigration": false,
-    "ConnectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=DotNet_Dev;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=True;;App=EntityFramework;"
+    "ConnectionString": "Server=PS20190501CHGL;DataBase=JuData;UID=sa;Pwd=123;MultipleActiveResultSets=True;;App=EntityFramework;"
   }
-}
