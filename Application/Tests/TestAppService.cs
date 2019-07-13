@@ -32,7 +32,9 @@
 
         public int CreateOrUpdate(TestBindModel model)
         {
-            var entity = model.ToEntity();
+            var entity = service.Get(model.Id, tracking: true);
+
+            entity = model.ToEntity(entity);
 
             return service.CreateOrUpdate(entity, true);
         }
