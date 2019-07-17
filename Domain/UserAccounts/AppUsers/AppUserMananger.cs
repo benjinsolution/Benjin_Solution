@@ -31,6 +31,11 @@
             UserTokenProvider = new EmailTokenProvider<AppUser>();
         }
 
+        /// <summary>
+        /// 当前用户标识
+        /// </summary>
+        protected string CurrentUserId { get; private set; }
+
         protected IPrincipal CurrentPrincipal { get; private set; }
 
         public void InitCurrentPrincipal(IPrincipal principal)
@@ -41,11 +46,13 @@
             }
 
             CurrentPrincipal = principal;
+
+            CurrentUserId = principal?.Identity?.GetUserId();
         }
 
         public async Task<AppUser> GetCurrentAppUserAsync()
         {
-            var userId = CurrentPrincipal?.Identity?.GetUserId();
+            var userId = CurrentUserId;
 
             var user = await FindByIdAsync(userId ?? string.Empty);
 
