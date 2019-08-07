@@ -16,7 +16,7 @@
     <AssemblyName>WebApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -170,6 +170,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web_Desktop\index.html" />
+    <Content Include="Web_Desktop\Test_Post.html" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -229,7 +230,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52075</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52075/</IISUrl>
+          <IISUrl>http://localhost/WebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>POST测试</title>
+
+    <!--jquery-->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+
+    <!--bootstrap-->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../node_modules/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script>
+        function push() {
+            let formData = new FormData();
+
+            let files = $("input[type=file]")[0].files;
+
+            let name = $("input[name=Name]").val();
+
+            let idNo = $("input[name=IdNo]").val();
+
+            if (!name) {
+                alert("姓名必填");
+
+                return;
+            }
+
+            if (!idNo) {
+                alert("身份证号码必填");
+
+                return;
+            }
+
+            if (files.length == 0) {
+                alert("未选择身份证照片");
+
+                return;
+            }
+
+            formData.append("PostData", JSON.stringify({ 'Name': name, 'IdNo': idNo }));
+
+            for (let index in files) {
+                formData.append("file", files[index])
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '../api/Test/TestPost',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                },
+                error: function (err) {
+                    alert(`错误：${JSON.stringify(err)}`);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form class="col-md-12 container" enctype="multipart/form-data">
+        <fieldset class="container">
+            <h2 class="text-center">测试</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">姓名：</label>
+                    <input class="form-control" type="text" name="Name" maxlength="10" />
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">身份证号码：</label>
+                    <input class="form-control" type="text" name="IdNo" maxlength="18" />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label">身份证照片：</label>
+                    <input class="form-control" type="file" readonly name="file" />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row text-center">
+                <button class="btn btn-default" type="button" onclick="push()">测试</button>
+
+                <button class="btn btn-default" type="reset">重置</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
