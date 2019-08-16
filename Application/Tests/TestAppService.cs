@@ -38,5 +38,10 @@
 
             return service.CreateOrUpdate(entity, true);
         }
+
+        public void TestTransaction()
+        {
+            service.TestTransaction();
+        }
     }
 }

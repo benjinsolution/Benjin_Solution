@@ -38,6 +38,14 @@
         }
 
         [HttpPost]
+        public IHttpActionResult TestTransaction()
+        {
+            appService.TestTransaction();
+
+            return Ok();
+        }
+
+        [HttpPost]
         public IHttpActionResult TestPost()
         {
             var request = HttpContext.Current.Request;

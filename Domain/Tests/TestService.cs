@@ -34,5 +34,29 @@
 
             return commit ? unitOfWork.Commit() : -1;
         }
+
+        public void TestTransaction()
+        {
+            unitOfWork.EnableTransaction(() => 
+            {
+                // ********
+
+                // 提交1
+                unitOfWork.Commit();
+
+                // ********
+
+                // 提交2
+                unitOfWork.Commit();
+
+                // ********
+
+                // 提交3
+                unitOfWork.Commit();
+
+                // 提交4
+                // **********
+            });
+        }
     }
 }
